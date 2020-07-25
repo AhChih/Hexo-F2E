@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/Hexo-F2E/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Hexo-F2E/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/Hexo-F2E/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/Hexo-F2E/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/Hexo-F2E/css/main.css">
+
+
+<link rel="stylesheet" href="/Hexo-F2E/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ahchih.github.io","root":"/Hexo-F2E/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="介紹簡單又好用的 VueScrollTo 套件介紹">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VueScrollTo 套件介紹">
+<meta property="og:url" content="https://ahchih.github.io/Hexo-F2E/2020/05/20/05.VueScrollTo%20%E5%A5%97%E4%BB%B6%E4%BB%8B%E7%B4%B9/index.html">
+<meta property="og:site_name" content="焦糖前端筆記">
+<meta property="og:description" content="介紹簡單又好用的 VueScrollTo 套件介紹">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/05/20/05.VueScrollTo%20%E5%A5%97%E4%BB%B6%E4%BB%8B%E7%B4%B9/p2033.png">
+<meta property="article:published_time" content="2020-05-20T14:51:58.000Z">
+<meta property="article:modified_time" content="2020-07-25T16:08:49.994Z">
+<meta property="article:author" content="焦糖">
+<meta property="article:tag" content="Vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ahchih.github.io/Hexo-F2E/2020/05/20/05.VueScrollTo%20%E5%A5%97%E4%BB%B6%E4%BB%8B%E7%B4%B9/p2033.png">
+
+<link rel="canonical" href="https://ahchih.github.io/Hexo-F2E/2020/05/20/05.VueScrollTo%20%E5%A5%97%E4%BB%B6%E4%BB%8B%E7%B4%B9/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>VueScrollTo 套件介紹 | 焦糖前端筆記</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165619303-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-165619303-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/Hexo-F2E/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">焦糖前端筆記</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">F2E-blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-首頁">
+
+    <a href="/Hexo-F2E/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-標籤">
+
+    <a href="/Hexo-F2E/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-分類">
+
+    <a href="/Hexo-F2E/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-檔案">
+
+    <a href="/Hexo-F2E/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>檔案</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ahchih.github.io/Hexo-F2E/2020/05/20/05.VueScrollTo%20%E5%A5%97%E4%BB%B6%E4%BB%8B%E7%B4%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/Hexo-F2E/images/avatar.png">
+      <meta itemprop="name" content="焦糖">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="焦糖前端筆記">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          VueScrollTo 套件介紹
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-05-20 22:51:58" itemprop="dateCreated datePublished" datetime="2020-05-20T22:51:58+08:00">2020-05-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-07-26 00:08:49" itemprop="dateModified" datetime="2020-07-26T00:08:49+08:00">2020-07-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Hexo-F2E/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>介紹簡單又好用的 VueScrollTo 套件介紹</p>
+<a id="more"></a>
+
+<h3 id="NPM-安裝"><a href="#NPM-安裝" class="headerlink" title="NPM 安裝"></a>NPM 安裝</h3><p>首先我們必須先安裝套件，輸入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save vue-scrollto</span><br></pre></td></tr></table></figure>
+
+<p>接著我們在 main.js 中導入跟使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var VueScrollTo = require(<span class="string">'vue-scrollto'</span>);</span><br><span class="line"></span><br><span class="line">Vue.use(VueScrollTo)</span><br></pre></td></tr></table></figure>
+
+<h3 id="基礎設定"><a href="#基礎設定" class="headerlink" title="基礎設定"></a>基礎設定</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Vue.use(VueScrollTo, &#123;</span><br><span class="line">     container: <span class="string">"body"</span>,</span><br><span class="line">     duration: 500,</span><br><span class="line">     easing: <span class="string">"ease"</span>,</span><br><span class="line">     offset: 0,</span><br><span class="line">     force: <span class="literal">true</span>,</span><br><span class="line">     cancelable: <span class="literal">true</span>,</span><br><span class="line">     onStart: <span class="literal">false</span>,</span><br><span class="line">     onDone: <span class="literal">false</span>,</span><br><span class="line">     onCancel: <span class="literal">false</span>,</span><br><span class="line">     x: <span class="literal">false</span>,</span><br><span class="line">     y: <span class="literal">true</span></span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>在元件中直接加入使用，很簡單吧 ！！</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-scroll-to=<span class="string">"'設定指定的 ID'"</span> id=<span class="string">"gotop"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="搭配-jQuery-應用"><a href="#搭配-jQuery-應用" class="headerlink" title="搭配 jQuery 應用"></a>搭配 jQuery 應用</h3><p>在製作頁面的時候，我們會製作一顆按鈕讓使用者來觸發，並往上滾動<br>那如果希望在頁面中，滾動到某個高度時，再把這顆按鈕顯示出來<br>我們也可以透過 jQuery 來操作</p>
+<img src="/Hexo-F2E/2020/05/20/05.VueScrollTo%20%E5%A5%97%E4%BB%B6%E4%BB%8B%E7%B4%B9/p2033.png" class="">
+
+<p>在 mounted 中加入以下這段</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">showBtnCondition</span></span>() &#123;</span><br><span class="line">    <span class="keyword">if</span> ($(this).scrollTop() &gt; 1200) &#123; // 使用判 <span class="keyword">if</span> 來判斷高度</span><br><span class="line">      $(<span class="string">'#gotop'</span>).fadeIn(); // 顯示 icon</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      $(<span class="string">'#gotop'</span>).fadeOut();// 隱藏 icon</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  $(window).scroll(showBtnCondition); //全域偵測按鈕</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>大概就是這樣囉，鳩咪</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/Hexo-F2E/tags/Vue/" rel="tag"># Vue</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Hexo-F2E/2020/05/05/04.Burgers/" rel="prev" title="Vue Tasty Burgers 好吃的漢堡選單">
+      <i class="fa fa-chevron-left"></i> Vue Tasty Burgers 好吃的漢堡選單
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Hexo-F2E/2020/05/21/06.%E5%9F%B7%E8%A1%8C%E9%8C%AF%E8%AA%A4%E7%92%B0%E5%A2%83%20LHS,%20RHS/" rel="next" title="執行錯誤環境 LHS, RHS">
+      執行錯誤環境 LHS, RHS <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#NPM-安裝"><span class="nav-number">1.</span> <span class="nav-text">NPM 安裝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基礎設定"><span class="nav-number">2.</span> <span class="nav-text">基礎設定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方法"><span class="nav-number">3.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭配-jQuery-應用"><span class="nav-number">4.</span> <span class="nav-text">搭配 jQuery 應用</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="焦糖"
+      src="/Hexo-F2E/images/avatar.png">
+  <p class="site-author-name" itemprop="name">焦糖</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/Hexo-F2E/archives">
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/Hexo-F2E/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/Hexo-F2E/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">焦糖</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/Hexo-F2E/lib/anime.min.js"></script>
+  <script src="/Hexo-F2E/lib/velocity/velocity.min.js"></script>
+  <script src="/Hexo-F2E/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/Hexo-F2E/js/utils.js"></script>
+
+<script src="/Hexo-F2E/js/motion.js"></script>
+
+
+<script src="/Hexo-F2E/js/schemes/pisces.js"></script>
+
+
+<script src="/Hexo-F2E/js/next-boot.js"></script>
+
+<script src="/Hexo-F2E/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

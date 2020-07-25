@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/Hexo-F2E/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Hexo-F2E/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/Hexo-F2E/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/Hexo-F2E/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/Hexo-F2E/css/main.css">
+
+
+<link rel="stylesheet" href="/Hexo-F2E/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ahchih.github.io","root":"/Hexo-F2E/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="我們來學習建立一個 Hexo 部落格">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5分鐘 建立一個 Hexo 部落格">
+<meta property="og:url" content="https://ahchih.github.io/Hexo-F2E/2020/05/05/01.%E5%BB%BA%E7%AB%8BHexo%E9%83%A8%E8%90%BD%E6%A0%BC/index.html">
+<meta property="og:site_name" content="焦糖前端筆記">
+<meta property="og:description" content="我們來學習建立一個 Hexo 部落格">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/05/05/01.%E5%BB%BA%E7%AB%8BHexo%E9%83%A8%E8%90%BD%E6%A0%BC/p32.png">
+<meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/05/05/01.%E5%BB%BA%E7%AB%8BHexo%E9%83%A8%E8%90%BD%E6%A0%BC/Node.png">
+<meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/05/05/01.%E5%BB%BA%E7%AB%8BHexo%E9%83%A8%E8%90%BD%E6%A0%BC/gitv.png">
+<meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/05/05/01.%E5%BB%BA%E7%AB%8BHexo%E9%83%A8%E8%90%BD%E6%A0%BC/hexo-v1.png">
+<meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/05/05/01.%E5%BB%BA%E7%AB%8BHexo%E9%83%A8%E8%90%BD%E6%A0%BC/hexos.png">
+<meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/05/05/01.%E5%BB%BA%E7%AB%8BHexo%E9%83%A8%E8%90%BD%E6%A0%BC/hexoblog.png">
+<meta property="article:published_time" content="2020-05-05T01:39:06.000Z">
+<meta property="article:modified_time" content="2020-07-25T15:42:37.739Z">
+<meta property="article:author" content="焦糖">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ahchih.github.io/Hexo-F2E/2020/05/05/01.%E5%BB%BA%E7%AB%8BHexo%E9%83%A8%E8%90%BD%E6%A0%BC/p32.png">
+
+<link rel="canonical" href="https://ahchih.github.io/Hexo-F2E/2020/05/05/01.%E5%BB%BA%E7%AB%8BHexo%E9%83%A8%E8%90%BD%E6%A0%BC/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>5分鐘 建立一個 Hexo 部落格 | 焦糖前端筆記</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165619303-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-165619303-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/Hexo-F2E/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">焦糖前端筆記</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">F2E-blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-首頁">
+
+    <a href="/Hexo-F2E/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-標籤">
+
+    <a href="/Hexo-F2E/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-分類">
+
+    <a href="/Hexo-F2E/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-檔案">
+
+    <a href="/Hexo-F2E/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>檔案</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ahchih.github.io/Hexo-F2E/2020/05/05/01.%E5%BB%BA%E7%AB%8BHexo%E9%83%A8%E8%90%BD%E6%A0%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/Hexo-F2E/images/avatar.png">
+      <meta itemprop="name" content="焦糖">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="焦糖前端筆記">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          5分鐘 建立一個 Hexo 部落格
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-05-05 09:39:06" itemprop="dateCreated datePublished" datetime="2020-05-05T09:39:06+08:00">2020-05-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-07-25 23:42:37" itemprop="dateModified" datetime="2020-07-25T23:42:37+08:00">2020-07-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Hexo-F2E/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>我們來學習建立一個 Hexo 部落格</p>
+<a id="more"></a>
+
+<img src="/Hexo-F2E/2020/05/05/01.%E5%BB%BA%E7%AB%8BHexo%E9%83%A8%E8%90%BD%E6%A0%BC/p32.png" class="">
+
+<p>會用到的技術有: git、node.js 套件管理系統</p>
+<p>因此我們必須先安裝這二個東西才能夠繼續</p>
+<h3 id="安裝-NPM"><a href="#安裝-NPM" class="headerlink" title="安裝 NPM"></a>安裝 NPM</h3><p><a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node 官網</a><br>使用 Hexo 架設網站必須要先安裝NPM到電腦環境中，<br>因為 Hexo 是基於 Node.js 的開發的套件，所以想要使用 Hexo 的指令需要使用到 NPM 的協助。</p>
+<p>而 NPM 是什麼呢?<br>它全名是「Node Package Manager」，可以理解為一個線上套件庫，用來從線上下載各式各樣的 Javascript 套件。</p>
+<img src="/Hexo-F2E/2020/05/05/01.%E5%BB%BA%E7%AB%8BHexo%E9%83%A8%E8%90%BD%E6%A0%BC/Node.png" class="">
+
+<p>下載安裝完成後 我們可以開啟命令提示字元<br>輸入 <code>npm -v</code><br>可以看到我們安裝的版本，代表安裝成功了!</p>
+
+
+<h3 id="安裝-Git"><a href="#安裝-Git" class="headerlink" title="安裝 Git"></a>安裝 Git</h3><p><a href="https://git-scm.com/" target="_blank" rel="noopener">Git 官網</a><br>接下來要安裝 Git 到電腦環境，安裝 Git 是為了能夠在Github上架設網站的伺服器，<br>這個步驟很簡單只需要到 Git 官網下載 Git 安裝包。</p>
+<p>安裝時只要一直按 Next 設定即可，除非有需要額外的需求，否則預設的即可</p>
+<img src="/Hexo-F2E/2020/05/05/01.%E5%BB%BA%E7%AB%8BHexo%E9%83%A8%E8%90%BD%E6%A0%BC/gitv.png" class="">
+
+<h3 id="安裝-Hexo"><a href="#安裝-Hexo" class="headerlink" title="安裝 Hexo"></a>安裝 Hexo</h3><p><a href="https://hexo.io/zh-tw/" target="_blank" rel="noopener">Hexo 官網</a><br>上面二個都安裝好了以後，<br>我們就可以準備來安裝 Hexo 囉!</p>
+<p>接著我們一樣打開命令提示字元<br>輸入 <code>npm install hexo-cli -g</code> 來安裝 Hexo 的套件<br>安裝完後可以輸入 <code>hexo -v</code> 來確定是否有安裝完成</p>
+<img src="/Hexo-F2E/2020/05/05/01.%E5%BB%BA%E7%AB%8BHexo%E9%83%A8%E8%90%BD%E6%A0%BC/hexo-v1.png" class="">
+
+<p>完成之後可以輸入 <code>heox init myHexo</code> 來建立 hexo<br>(上面的 “myHexo” 可以自訂名稱，這邊以 myHexo 當作範例)</p>
+<p>建立完成之後我們切換到 myHexo 的目錄下<br>輸入 <code>npm install</code> 來安裝 node_modules</p>
+<p>完成安裝後接著<br>輸入 <code>hexo s</code> 我們就可以啟動本地端 Local Host 的 Server</p>
+<img src="/Hexo-F2E/2020/05/05/01.%E5%BB%BA%E7%AB%8BHexo%E9%83%A8%E8%90%BD%E6%A0%BC/hexos.png" class="">
+
+<p>啟動完成之後把 <code>http://localhost:4000</code> 貼到瀏覽器上<br>可以看到頁面上有東西出現<br>就恭喜你完成建立 Hexo 部落格囉!</p>
+<img src="/Hexo-F2E/2020/05/05/01.%E5%BB%BA%E7%AB%8BHexo%E9%83%A8%E8%90%BD%E6%A0%BC/hexoblog.png" class="">
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/Hexo-F2E/tags/Hexo/" rel="tag"># Hexo</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/Hexo-F2E/2020/05/05/02.vue-cli%E9%83%A8%E5%B1%AC%E5%88%B0github%E4%B8%8A/" rel="next" title="Vue-Cli 專案部屬到 Github pages上">
+      Vue-Cli 專案部屬到 Github pages上 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝-NPM"><span class="nav-number">1.</span> <span class="nav-text">安裝 NPM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝-Git"><span class="nav-number">2.</span> <span class="nav-text">安裝 Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝-Hexo"><span class="nav-number">3.</span> <span class="nav-text">安裝 Hexo</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="焦糖"
+      src="/Hexo-F2E/images/avatar.png">
+  <p class="site-author-name" itemprop="name">焦糖</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/Hexo-F2E/archives">
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/Hexo-F2E/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/Hexo-F2E/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">焦糖</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/Hexo-F2E/lib/anime.min.js"></script>
+  <script src="/Hexo-F2E/lib/velocity/velocity.min.js"></script>
+  <script src="/Hexo-F2E/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/Hexo-F2E/js/utils.js"></script>
+
+<script src="/Hexo-F2E/js/motion.js"></script>
+
+
+<script src="/Hexo-F2E/js/schemes/pisces.js"></script>
+
+
+<script src="/Hexo-F2E/js/next-boot.js"></script>
+
+<script src="/Hexo-F2E/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

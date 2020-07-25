@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/Hexo-F2E/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Hexo-F2E/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/Hexo-F2E/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/Hexo-F2E/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/Hexo-F2E/css/main.css">
+
+
+<link rel="stylesheet" href="/Hexo-F2E/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"ahchih.github.io","root":"/Hexo-F2E/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="來介紹一下傳值與傳參考的特性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="物件的參考特性">
+<meta property="og:url" content="https://ahchih.github.io/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/index.html">
+<meta property="og:site_name" content="焦糖前端筆記">
+<meta property="og:description" content="來介紹一下傳值與傳參考的特性">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/p0001.png">
+<meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/p0002.png">
+<meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/p0003.png">
+<meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/p0004.png">
+<meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/p0005.png">
+<meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/p0006.png">
+<meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/p0007.png">
+<meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/p0008.png">
+<meta property="article:published_time" content="2020-06-05T06:04:55.000Z">
+<meta property="article:modified_time" content="2020-07-25T15:42:37.809Z">
+<meta property="article:author" content="焦糖">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ahchih.github.io/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/p0001.png">
+
+<link rel="canonical" href="https://ahchih.github.io/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>物件的參考特性 | 焦糖前端筆記</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-165619303-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-165619303-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/Hexo-F2E/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">焦糖前端筆記</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">F2E-blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-首頁">
+
+    <a href="/Hexo-F2E/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-標籤">
+
+    <a href="/Hexo-F2E/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-分類">
+
+    <a href="/Hexo-F2E/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-檔案">
+
+    <a href="/Hexo-F2E/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>檔案</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://ahchih.github.io/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/Hexo-F2E/images/avatar.png">
+      <meta itemprop="name" content="焦糖">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="焦糖前端筆記">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          物件的參考特性
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-06-05 14:04:55" itemprop="dateCreated datePublished" datetime="2020-06-05T14:04:55+08:00">2020-06-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-07-25 23:42:37" itemprop="dateModified" datetime="2020-07-25T23:42:37+08:00">2020-07-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/Hexo-F2E/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>來介紹一下傳值與傳參考的特性</p>
+<a id="more"></a>
+
+<h1 id="傳值與傳參考"><a href="#傳值與傳參考" class="headerlink" title="傳值與傳參考"></a>傳值與傳參考</h1><p>直接來看程式碼範例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = <span class="string">'小明'</span>;</span><br><span class="line"><span class="keyword">var</span> person2 = person;</span><br><span class="line">person2 = <span class="string">'杰倫'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(person, person2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// '小明'</span></span><br><span class="line"><span class="comment">// '杰倫'</span></span><br></pre></td></tr></table></figure>
+
+<p>這一段非常好理解</p>
+<p>一開始賦予一個值給 <code>person</code></p>
+<p>之後又重新賦予一個值給 <code>person2</code></p>
+<p>所以出來的結果自然會是 <code>小明</code> 跟 <code>杰倫</code></p>
+<hr>
+<p>接下來來看另外一段範例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    name: <span class="string">'小明'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person2 = person;</span><br><span class="line">person2.name = <span class="string">'杰倫'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person, person2);</span><br><span class="line"><span class="built_in">console</span>.log(person === person2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;name: 杰倫&#125;</span></span><br><span class="line"><span class="comment">// &#123;name: 杰倫&#125;</span></span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>這時候會發現，欸?</p>
+<p>怎麼 <code>person</code> 跟 <code>person2</code> 都會變成杰倫了</p>
+<p>而且使用嚴謹模式來比對還等於 <code>true</code>，為什麼會這個樣子呢?</p>
+<p>雖然跟前面的範例很像，但前者是使用純值，而這個範例是使用物件</p>
+<h1 id="值與參考"><a href="#值與參考" class="headerlink" title="值與參考"></a>值與參考</h1><img src="/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/p0001.png" class="">
+<p>(圖片來源：六角學院)</p>
+<p>第一個範例中是使用純值的方式，所以是傳值</p>
+<p>而第二個範例是使用物件的方式，所以是傳參考</p>
+<h2 id="傳值"><a href="#傳值" class="headerlink" title="傳值"></a>傳值</h2><img src="/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/p0002.png" class="">
+
+<p>像第一個我們定義一個變數</p>
+<p>那麼在左邊記憶體就會記錄變數的名稱，右邊就會把值給帶進來</p>
+<p>而當定義 <code>person2</code> 的時候，又把 <code>person</code> 的變值給賦予過去</p>
+<p>所以傳值就是一個複製的概念</p>
+<img src="/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/p0003.png" class="">
+
+<p>而當 <code>person2</code> = <code>&#39;杰倫&#39;</code> 重新再賦予值的時候</p>
+<p>這時候就跟 <code>person</code> 沒有關連性</p>
+<p>所以把 <code>person2</code> 改成 <code>&#39;杰倫&#39;</code>，</p>
+<p>會發現 <code>person</code> 還是維持 <code>&#39;小明&#39;</code> 的狀態不會改變</p>
+<hr>
+<h2 id="傳參考"><a href="#傳參考" class="headerlink" title="傳參考"></a>傳參考</h2><img src="/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/p0004.png" class="">
+
+<p>接下來看一下傳參考的概念</p>
+<p>那麼右下角是一個記憶體區塊的參考物件<font color="#ff0000">(0x01是為了方便閱讀取的名稱)</font></p>
+<p>那麼 0x01 就是記憶體的參考路徑</p>
+<p>這個參考路徑就包含了 <code>name</code> 以及 <code>money</code> 的屬性</p>
+<img src="/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/p0005.png" class="">
+
+<p>那我們定義一個 <code>person</code> 呢，後面所載入的是參考路徑 0x01</p>
+<p>而不是裡面的物件內容</p>
+<p>透過這種方式就可以取得裡面的 <code>name</code> 跟 <code>money</code></p>
+<p>所以 <code>person</code> 呢並不會把 <code>name</code> 跟 <code>money</code> 存入到自己的記憶體空間來</p>
+<p>它只會傳入一個參考</p>
+<img src="/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/p0006.png" class="">
+
+<p>接著我們定義 <code>person2</code></p>
+<p>而它傳入的位置一樣是跟 <code>person</code> 一樣沒有改變</p>
+<p>所以這個物件是它們共用的</p>
+<p>所以當 <code>name</code> 改成 <code>&#39;杰倫&#39;</code> 的時候，自然會二個一起做更改</p>
+<p>所以畫面中只有一個物件，並沒有第二個物件</p>
+<hr>
+<img src="/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/p0007.png" class="">
+
+<p>接著我們跟上面一樣</p>
+<p>指定 <code>person2</code> 傳入跟 <code>person</code> 的位置</p>
+<p>這時候 <code>person2</code> 在指定一個新的物件，會發生什麼事情呢</p>
+<img src="/Hexo-F2E/2020/06/05/22.%E7%89%A9%E4%BB%B6%E7%9A%84%E5%8F%83%E8%80%83%E7%89%B9%E6%80%A7/p0008.png" class="">
+
+<p>如果我們指定一個新的物件，這時候就會傳入新的參考位置</p>
+<p>所以 <code>person2</code> 就會指向 0x02</p>
+<p>他們這樣就不會有任何關連性</p>
+<p>如果 <code>person2</code> 調整程式碼也不會跟 <code>person</code> 一樣有改變了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    name: <span class="string">'小明'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person2 = person;</span><br><span class="line">person2 = &#123;</span><br><span class="line">    name: <span class="string">'小明'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person, person2);</span><br><span class="line"><span class="built_in">console</span>.log(person === person2);</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#123;name: 小明&#125;</span></span><br><span class="line"><span class="comment">// &#123;name: 小明&#125;</span></span><br><span class="line"><span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>前面雖然一樣都是 <code>{name: 小明}</code> 沒有改變</p>
+<p>但後面卻是 <code>false</code>，原因是因為在定義 <code>person2</code> 的時候</p>
+<p>又產生了一個新的物件，而它們所參考的路徑不一樣，自然也就是 <code>false</code> 了</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/Hexo-F2E/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Hexo-F2E/2020/06/04/21.Vue%20%E5%A6%82%E4%BD%95%E5%9C%A8%E7%89%A9%E4%BB%B6%E4%B8%AD%E6%8F%92%E5%85%A5%E6%96%B0%E5%B1%AC%E6%80%A7%E4%B8%A6%E7%B5%A6%E4%B8%80%E5%80%8B%E5%80%BC/" rel="prev" title="Vue 如何在物件中插入新屬性">
+      <i class="fa fa-chevron-left"></i> Vue 如何在物件中插入新屬性
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/Hexo-F2E/2020/06/09/23.%E6%B7%B1%E5%B1%A4%E8%88%87%E6%B7%BA%E5%B1%A4%E8%A4%87%E8%A3%BD/" rel="next" title="深層與淺層複製">
+      深層與淺層複製 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#傳值與傳參考"><span class="nav-number">1.</span> <span class="nav-text">傳值與傳參考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#值與參考"><span class="nav-number">2.</span> <span class="nav-text">值與參考</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#傳值"><span class="nav-number">2.1.</span> <span class="nav-text">傳值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#傳參考"><span class="nav-number">2.2.</span> <span class="nav-text">傳參考</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="焦糖"
+      src="/Hexo-F2E/images/avatar.png">
+  <p class="site-author-name" itemprop="name">焦糖</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/Hexo-F2E/archives">
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/Hexo-F2E/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/Hexo-F2E/tags/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">焦糖</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/Hexo-F2E/lib/anime.min.js"></script>
+  <script src="/Hexo-F2E/lib/velocity/velocity.min.js"></script>
+  <script src="/Hexo-F2E/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/Hexo-F2E/js/utils.js"></script>
+
+<script src="/Hexo-F2E/js/motion.js"></script>
+
+
+<script src="/Hexo-F2E/js/schemes/pisces.js"></script>
+
+
+<script src="/Hexo-F2E/js/next-boot.js"></script>
+
+<script src="/Hexo-F2E/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
