@@ -28,7 +28,7 @@
 <meta property="og:description" content="JavaScript 是一動態型別的語言，所以會在執行階段不斷的轉換">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2020-06-01T07:09:27.000Z">
-<meta property="article:modified_time" content="2020-07-25T15:42:37.800Z">
+<meta property="article:modified_time" content="2020-07-26T11:27:01.975Z">
 <meta property="article:author" content="焦糖">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -202,7 +202,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-07-25 23:42:37" itemprop="dateModified" datetime="2020-07-25T23:42:37+08:00">2020-07-25</time>
+                <time title="修改時間：2020-07-26 19:27:01" itemprop="dateModified" datetime="2020-07-26T19:27:01+08:00">2020-07-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,24 +228,20 @@
         <p>JavaScript 是一動態型別的語言，所以會在執行階段不斷的轉換</p>
 <a id="more"></a>
 
-<h1 id="動態型別"><a href="#動態型別" class="headerlink" title="動態型別"></a>動態型別</h1><p>動態型別就是會隨著執行程式碼不斷的轉換</p>
-<p>因此 Javascript 要在執行階段的時候才會確定型別</p>
-<p>因此在執行的時候分為創造階段與執行階段</p>
+<h1 id="動態型別"><a href="#動態型別" class="headerlink" title="動態型別"></a>動態型別</h1><p>動態型別就是會隨著執行程式碼不斷的轉換<br>因此 Javascript 要在執行階段的時候才會確定型別<br>而在執行的時候會分為「創造階段」與 「執行階段」</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 創造階段</span></span><br><span class="line"><span class="keyword">var</span> myName;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 執行階段</span></span><br><span class="line">myName = <span class="string">'小明'</span>;</span><br></pre></td></tr></table></figure>
-<p>一開始在創造階段的時候 <code>var myName</code> 還沒有賦予值</p>
+<p>一開始在「創造階段」的時候 <code>var myName</code> 還沒有賦予值</p>
 <p>直到執行階段才會把 ‘小明’ 這個值賦予進去，並且才會有型別</p>
 <h1 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h1><p>接著我們可以使用 <code>typeof</code> 來檢視這個型別</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myName;</span><br><span class="line">myName = <span class="string">'小明'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> myName);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="string">'小明'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// string</span></span><br><span class="line"><span class="comment">// string</span></span><br></pre></td></tr></table></figure>
-<p>接著我們就會看到顯示 string 的型別</p>
-<p>這就是說明了值本身就有其實就具備了型別</p>
-<p>然後再把值與型別賦予在這個 <code>myName</code> 這個變數上</p>
+<p>接著我們就會看到顯示 string 的型別<br>這就是說明了值本身就有其實就具備了型別<br>然後再把值與型別賦予在這個 <code>myName</code> 這個變數上</p>
 <h1 id="動態型別範例"><a href="#動態型別範例" class="headerlink" title="動態型別範例"></a>動態型別範例</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num);</span><br><span class="line">num = <span class="string">'文字'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num);</span><br><span class="line"></span><br><span class="line"><span class="comment">// number</span></span><br><span class="line"><span class="comment">// string</span></span><br></pre></td></tr></table></figure>
 <p>我們看到 <code>num</code> 這個變數，本來的型別是數字</p>
-<p>後來則轉換成了字串，這就是動態型別</p>
-<h1 id="顯性與隱性轉換"><a href="#顯性與隱性轉換" class="headerlink" title="顯性與隱性轉換"></a>顯性與隱性轉換</h1><h2 id="顯性的轉換"><a href="#顯性的轉換" class="headerlink" title="顯性的轉換"></a>顯性的轉換</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num);</span><br><span class="line">num = <span class="string">'文字'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num);</span><br><span class="line"></span><br><span class="line"><span class="comment">// number</span></span><br><span class="line"><span class="comment">// string</span></span><br></pre></td></tr></table></figure>
+<p>後來則轉換成了字串，這就是「動態型別」</p>
+<h2 id="顯性的轉換"><a href="#顯性的轉換" class="headerlink" title="顯性的轉換"></a>顯性的轉換</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num);</span><br><span class="line">num = <span class="string">'文字'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num);</span><br><span class="line"></span><br><span class="line"><span class="comment">// number</span></span><br><span class="line"><span class="comment">// string</span></span><br></pre></td></tr></table></figure>
 <p>這一個範例就是顯性的轉換</p>
 <h2 id="隱性的轉換"><a href="#隱性的轉換" class="headerlink" title="隱性的轉換"></a>隱性的轉換</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">1</span>;</span><br><span class="line">num = num + <span class="string">''</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(num, <span class="keyword">typeof</span> num);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1 string</span></span><br></pre></td></tr></table></figure>
-<p>在這裡你會看到它的結果是1, 但是型別卻是不一樣的</p>
+<p>在這裡你會看到它的結果是 1, 但是型別卻是不一樣的</p>
 <p>那我們把第二行插入 <code>console.log</code> 看一次</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(num, <span class="keyword">typeof</span> num);</span><br><span class="line">num = num + <span class="string">''</span>;</span><br><span class="line"><span class="built_in">console</span>.log(num, <span class="keyword">typeof</span> num);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1 "number"</span></span><br><span class="line"><span class="comment">// 1 string</span></span><br></pre></td></tr></table></figure>
 <p>會發現上面的型別是一個數字 <code>number</code> 但在後面的型別卻轉換成了字串</p>
@@ -253,10 +249,11 @@
 <p>那麼最後我們的 <code>num</code> 已經是字串了，那麼如果再加上數字呢</p>
 <p>例如：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(num, <span class="keyword">typeof</span> num);</span><br><span class="line">num = num + <span class="string">''</span>;</span><br><span class="line"><span class="built_in">console</span>.log(num, <span class="keyword">typeof</span> num);</span><br><span class="line"></span><br><span class="line">num = num * <span class="number">3</span>;</span><br><span class="line"><span class="built_in">console</span>.log(num, <span class="keyword">typeof</span> num);</span><br><span class="line"><span class="comment">// 1 "number"</span></span><br><span class="line"><span class="comment">// 1 string</span></span><br><span class="line"><span class="comment">// 3 "number"</span></span><br></pre></td></tr></table></figure>
-<p>結果我們可以發現型別又轉回來了</p>
-<p>又從字串轉為數值</p>
-<p>因此隱性的轉換我們必須去了解在型別中</p>
-<p>它們會做怎樣的變化</p>
+<p>結果我們可以發現型別又轉回來了，又從字串轉為數值</p>
+<p>因此隱性的轉換我們必須去了解在型別中，它們會做怎樣的變化</p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="https://www.hexschool.com/" target="_blank" rel="noopener">六角學院</a></li>
+</ul>
 
     </div>
 
@@ -340,7 +337,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#動態型別"><span class="nav-number">1.</span> <span class="nav-text">動態型別</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typeof"><span class="nav-number">2.</span> <span class="nav-text">typeof</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#動態型別範例"><span class="nav-number">3.</span> <span class="nav-text">動態型別範例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#顯性與隱性轉換"><span class="nav-number">4.</span> <span class="nav-text">顯性與隱性轉換</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#顯性的轉換"><span class="nav-number">4.1.</span> <span class="nav-text">顯性的轉換</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隱性的轉換"><span class="nav-number">4.2.</span> <span class="nav-text">隱性的轉換</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#動態型別"><span class="nav-number">1.</span> <span class="nav-text">動態型別</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typeof"><span class="nav-number">2.</span> <span class="nav-text">typeof</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#動態型別範例"><span class="nav-number">3.</span> <span class="nav-text">動態型別範例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#顯性的轉換"><span class="nav-number">3.1.</span> <span class="nav-text">顯性的轉換</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隱性的轉換"><span class="nav-number">3.2.</span> <span class="nav-text">隱性的轉換</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#參考"><span class="nav-number">3.3.</span> <span class="nav-text">參考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

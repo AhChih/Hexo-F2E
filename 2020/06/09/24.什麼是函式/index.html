@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/06/09/24.%E4%BB%80%E9%BA%BC%E6%98%AF%E5%87%BD%E5%BC%8F/p0003.png">
 <meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/06/09/24.%E4%BB%80%E9%BA%BC%E6%98%AF%E5%87%BD%E5%BC%8F/p0004.png">
 <meta property="article:published_time" content="2020-06-09T02:46:35.000Z">
-<meta property="article:modified_time" content="2020-07-25T15:42:37.821Z">
+<meta property="article:modified_time" content="2020-07-26T13:08:49.295Z">
 <meta property="article:author" content="焦糖">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -207,7 +207,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-07-25 23:42:37" itemprop="dateModified" datetime="2020-07-25T23:42:37+08:00">2020-07-25</time>
+                <time title="修改時間：2020-07-26 21:08:49" itemprop="dateModified" datetime="2020-07-26T21:08:49+08:00">2020-07-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -238,7 +238,7 @@
 <p>函式本身就是一個物件，所以我們先在第一行宣告 <code>afunction</code> 這個物件</p>
 <p>但是它與一般物件不同，它多了一個被呼叫的能力</p>
 <p>在第 1 行 <code>afunction</code> 後面多了一個括號 <code>(parameter)</code></p>
-<p>而這個括號就是用來傳送參數所使用的</p>
+<p>而這個括號中的值，就是用來傳送參數所使用的</p>
 <p>所以當第 7 行 <code>var data = afunction(&#39;參數&#39;)</code> 在呼叫 <code>afunction</code> 這個函式的時候，也會把 <code>(parameter)</code> 參數傳送進去</p>
 <p>接著在第 1 行 <code>afunction</code> 後面有個大括號，而這個大括號裡面有程式碼片段，這也是這個函式所擁有的</p>
 <p>所以目前函式就包含了二個部分</p>
@@ -258,12 +258,9 @@
 <p>當我們使用 Function 去宣告一個字詞的時候，它就會變成一個函式</p>
 <p>並且具有圖片以上的特點</p>
 <ul>
-<li><p>可被呼叫</p>
-</li>
-<li><p>包含程式碼片段</p>
-</li>
-<li><p>名稱(選用)</p>
-</li>
+<li>可被呼叫</li>
+<li>包含程式碼片段</li>
+<li>名稱(選用)</li>
 </ul>
 <p>函式到底需不需要名稱 取決於函式到底能不能被調用</p>
 <h2 id="函式陳述式"><a href="#函式陳述式" class="headerlink" title="函式陳述式"></a>函式陳述式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">functionA</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'函式陳述式'</span>);</span><br><span class="line">&#125;</span><br><span class="line">functionA();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函式陳述式</span></span><br></pre></td></tr></table></figure>
@@ -308,6 +305,11 @@
 <p>接著帶入另外一段具名函式 <code>giveMoreMoney</code></p>
 <p>接著如果金額不夠的話，會在後面重複執行 <code>giveMoreMoney</code> 直到金額夠了為止</p>
 <img src="/Hexo-F2E/2020/06/09/24.%E4%BB%80%E9%BA%BC%E6%98%AF%E5%87%BD%E5%BC%8F/p0004.png" class="">
+
+<h1 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h1><ul>
+<li><a href="https://www.hexschool.com/" target="_blank" rel="noopener">六角學院</a></li>
+</ul>
+
     </div>
 
     
@@ -390,7 +392,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函式結構"><span class="nav-number">1.</span> <span class="nav-text">函式結構</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函式陳述式"><span class="nav-number">1.1.</span> <span class="nav-text">函式陳述式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函式表達式"><span class="nav-number">1.2.</span> <span class="nav-text">函式表達式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具名函式-與-匿名函式"><span class="nav-number">1.3.</span> <span class="nav-text">具名函式 與 匿名函式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表達式函式-的具名函式"><span class="nav-number">1.4.</span> <span class="nav-text">表達式函式 的具名函式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#範例"><span class="nav-number">2.</span> <span class="nav-text">範例</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函式結構"><span class="nav-number">1.</span> <span class="nav-text">函式結構</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函式陳述式"><span class="nav-number">1.1.</span> <span class="nav-text">函式陳述式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函式表達式"><span class="nav-number">1.2.</span> <span class="nav-text">函式表達式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具名函式-與-匿名函式"><span class="nav-number">1.3.</span> <span class="nav-text">具名函式 與 匿名函式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表達式函式-的具名函式"><span class="nav-number">1.4.</span> <span class="nav-text">表達式函式 的具名函式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#範例"><span class="nav-number">2.</span> <span class="nav-text">範例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#參考"><span class="nav-number">3.</span> <span class="nav-text">參考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/05/27/13.%E5%9F%B7%E8%A1%8C%E5%BA%8F%E8%88%87%E5%90%8C%E6%AD%A5%E3%80%81%E9%9D%9E%E5%90%8C%E6%AD%A5/p0035.png">
 <meta property="og:image" content="https://ahchih.github.io/Hexo-F2E/2020/05/27/13.%E5%9F%B7%E8%A1%8C%E5%BA%8F%E8%88%87%E5%90%8C%E6%AD%A5%E3%80%81%E9%9D%9E%E5%90%8C%E6%AD%A5/p0036.png">
 <meta property="article:published_time" content="2020-05-27T05:18:20.000Z">
-<meta property="article:modified_time" content="2020-07-25T15:42:37.790Z">
+<meta property="article:modified_time" content="2020-07-26T11:19:08.957Z">
 <meta property="article:author" content="焦糖">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -207,7 +207,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-07-25 23:42:37" itemprop="dateModified" datetime="2020-07-25T23:42:37+08:00">2020-07-25</time>
+                <time title="修改時間：2020-07-26 19:19:08" itemprop="dateModified" datetime="2020-07-26T19:19:08+08:00">2020-07-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -236,29 +236,20 @@
 <p>那麼什麼是單執行序呢 ?</p>
 <img src="/Hexo-F2E/2020/05/27/13.%E5%9F%B7%E8%A1%8C%E5%BA%8F%E8%88%87%E5%90%8C%E6%AD%A5%E3%80%81%E9%9D%9E%E5%90%8C%E6%AD%A5/p0022.png" class="">
 
-<p>(圖片來源：六角學院)</p>
-<h1 id="單執行序"><a href="#單執行序" class="headerlink" title="單執行序"></a>單執行序</h1><p>所謂的單執行序是，例如圖片中的小明有三個任務</p>
-<p>但是他一次只能做一樣事情，沒有辦法同時進行</p>
-<p>必須等到現在的事情做完了才能做下一件事情</p>
-<h1 id="多執行序"><a href="#多執行序" class="headerlink" title="多執行序"></a>多執行序</h1><p>那麼多執行序就是三個任務可以同時進行</p>
+<h1 id="單執行序"><a href="#單執行序" class="headerlink" title="單執行序"></a>單執行序</h1><p>所謂的單執行序是，例如圖片中的小明有三個任務<br>但是他一次只能做一樣事情，沒有辦法同時進行<br>必須等到現在的事情做完了才能做下一件事情</p>
+<h1 id="多執行序"><a href="#多執行序" class="headerlink" title="多執行序"></a>多執行序</h1><p>那麼多執行序就是三個任務可以同時進行<br>不像單執行緒一次只能做一個任務</p>
 <hr>
-<h1 id="非同步-與-同步"><a href="#非同步-與-同步" class="headerlink" title="非同步 與 同步"></a>非同步 與 同步</h1><p>單執行序是相對於系統的執行</p>
-<p>那麼非同步則是針對程式語言本身</p>
-<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><img src="/Hexo-F2E/2020/05/27/13.%E5%9F%B7%E8%A1%8C%E5%BA%8F%E8%88%87%E5%90%8C%E6%AD%A5%E3%80%81%E9%9D%9E%E5%90%8C%E6%AD%A5/p0034.png" class="">
+<h1 id="非同步-與-同步"><a href="#非同步-與-同步" class="headerlink" title="非同步 與 同步"></a>非同步 與 同步</h1><p>單執行序是相對於系統的執行<br>那麼非同步則是針對程式語言本身</p>
+<img src="/Hexo-F2E/2020/05/27/13.%E5%9F%B7%E8%A1%8C%E5%BA%8F%E8%88%87%E5%90%8C%E6%AD%A5%E3%80%81%E9%9D%9E%E5%90%8C%E6%AD%A5/p0034.png" class="">
 
-<p>以這段程式碼來說，同步會是依序執行的</p>
-<p>會先吃完早餐，再打給漂亮阿姨</p>
-<h2 id="非同步"><a href="#非同步" class="headerlink" title="非同步"></a>非同步</h2><img src="/Hexo-F2E/2020/05/27/13.%E5%9F%B7%E8%A1%8C%E5%BA%8F%E8%88%87%E5%90%8C%E6%AD%A5%E3%80%81%E9%9D%9E%E5%90%8C%E6%AD%A5/p0035.png" class="">
+<p>以這段程式碼來說，同步會是依序執行的<br>會先吃完早餐，再打給漂亮阿姨</p>
+<img src="/Hexo-F2E/2020/05/27/13.%E5%9F%B7%E8%A1%8C%E5%BA%8F%E8%88%87%E5%90%8C%E6%AD%A5%E3%80%81%E9%9D%9E%E5%90%8C%E6%AD%A5/p0035.png" class="">
 
-<p>那麼這一段是一個非同步的程式碼，JavaScript 一樣是依序執行</p>
-<p>但是會把非同步的任務往後放</p>
-<p>那麼這邊就會提到事件佇列</p>
-<h2 id="事件佇列"><a href="#事件佇列" class="headerlink" title="事件佇列"></a>事件佇列</h2><p>那麼事件佇列又稱為 <code>Event Queue</code></p>
+<p>這一段是一個非同步的程式碼，JavaScript 一樣是依序執行<br>但是會把非同步的任務往後放，這邊就會提到事件佇列</p>
+<h2 id="事件佇列"><a href="#事件佇列" class="headerlink" title="事件佇列"></a>事件佇列</h2><p>事件佇列又稱為 <code>Event Queue</code></p>
 <img src="/Hexo-F2E/2020/05/27/13.%E5%9F%B7%E8%A1%8C%E5%BA%8F%E8%88%87%E5%90%8C%E6%AD%A5%E3%80%81%E9%9D%9E%E5%90%8C%E6%AD%A5/p0036.png" class="">
 
-<p>當 JavaScript 遇上非同步處理的時候</p>
-<p>JavaScript 一樣會依序執行</p>
-<p>我們可以利用執行堆疊的概念來看看：</p>
+<p>當 JavaScript 遇上非同步處理的時候，JavaScript 一樣會依序執行<br>我們可以利用執行堆疊的概念來看看：</p>
 <p>首先我們一樣會先執行<code>do work</code>的執行堆疊</p>
 <ul>
 <li><p>接著會執行 <strong>吃早餐</strong> 的執行堆疊</p>
@@ -274,9 +265,14 @@
 </ul>
 <p>等到程式碼都執行完之後，才會才會執行 <strong>事件佇列</strong> 裡面這段程式碼</p>
 <hr>
-<h1 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">eatBreakFast</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'吃早餐'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">washingPlate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'洗餐盤'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callSomeone</span>(<span class="params">someone</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'打給'</span> + someone)</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(someone + <span class="string">'回電'</span>);</span><br><span class="line">    &#125;, <span class="number">0</span>); <span class="comment">//改成 0 秒</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doWork</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> auntie = <span class="string">'漂亮阿姨'</span>;</span><br><span class="line">    eatBreakFast();</span><br><span class="line">    callSomeone(auntie);</span><br><span class="line">    washingPlate();</span><br><span class="line">&#125;</span><br><span class="line">doWork();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 吃早餐</span></span><br><span class="line"><span class="comment">// 打給漂亮阿姨</span></span><br><span class="line"><span class="comment">// 洗餐盤</span></span><br><span class="line"><span class="comment">// 漂亮阿姨回電</span></span><br></pre></td></tr></table></figure>
+<h1 id="備註"><a href="#備註" class="headerlink" title="備註"></a>備註</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">eatBreakFast</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'吃早餐'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">washingPlate</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'洗餐盤'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">callSomeone</span>(<span class="params">someone</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'打給'</span> + someone)</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(someone + <span class="string">'回電'</span>);</span><br><span class="line">    &#125;, <span class="number">0</span>); <span class="comment">//改成 0 秒</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doWork</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> auntie = <span class="string">'漂亮阿姨'</span>;</span><br><span class="line">    eatBreakFast();</span><br><span class="line">    callSomeone(auntie);</span><br><span class="line">    washingPlate();</span><br><span class="line">&#125;</span><br><span class="line">doWork();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 吃早餐</span></span><br><span class="line"><span class="comment">// 打給漂亮阿姨</span></span><br><span class="line"><span class="comment">// 洗餐盤</span></span><br><span class="line"><span class="comment">// 漂亮阿姨回電</span></span><br></pre></td></tr></table></figure>
 <p>那如果我們把第 13 行改成 0 秒執行呢?</p>
 <p>你會發現 <strong>漂亮阿姨回電</strong> 還是在最後才執行</p>
+<p>因為程式碼在執行的過程中，只要遇到 setTimeout 非同步事件</p>
+<p>就會把它放到最後再執行</p>
+<h2 id="參考"><a href="#參考" class="headerlink" title="參考"></a>參考</h2><ul>
+<li><a href="https://www.hexschool.com/" target="_blank" rel="noopener">六角學院</a></li>
+</ul>
 
     </div>
 
@@ -360,7 +356,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#單執行序"><span class="nav-number">1.</span> <span class="nav-text">單執行序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多執行序"><span class="nav-number">2.</span> <span class="nav-text">多執行序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非同步-與-同步"><span class="nav-number">3.</span> <span class="nav-text">非同步 與 同步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#同步"><span class="nav-number">3.1.</span> <span class="nav-text">同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非同步"><span class="nav-number">3.2.</span> <span class="nav-text">非同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件佇列"><span class="nav-number">3.3.</span> <span class="nav-text">事件佇列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程式碼"><span class="nav-number">4.</span> <span class="nav-text">程式碼</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#單執行序"><span class="nav-number">1.</span> <span class="nav-text">單執行序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多執行序"><span class="nav-number">2.</span> <span class="nav-text">多執行序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非同步-與-同步"><span class="nav-number">3.</span> <span class="nav-text">非同步 與 同步</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件佇列"><span class="nav-number">3.1.</span> <span class="nav-text">事件佇列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#備註"><span class="nav-number">4.</span> <span class="nav-text">備註</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#參考"><span class="nav-number">4.1.</span> <span class="nav-text">參考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
